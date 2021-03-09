@@ -9,30 +9,32 @@
   <script src="" defer></script>
 </head>
 <body>
-  <h1>Hello</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Who</th>
-        <th>What</th>
-        <th>When</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for trigger in triggers %}
+  <div class="container">
+    <h1>Hello, there!</h1>
+    <table>
+      <thead>
         <tr>
-          <td><a href="{{ trigger['sender']['html_url'] }}">{{ trigger['sender']['login'] }}</a></td>
-          <td>
-            {% if trigger.action == 'created' %}
-              Starred
-            {% else %}
-              Unstarred
-            {% endif %}
-          </td>
-          <td>{{ trigger['my_timestamp'] }}</td>
+          <th>Who</th>
+          <th>What</th>
+          <th>When</th>
         </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {% for trigger in triggers %}
+          <tr>
+            <td>{{ trigger['sender']['login'] }}</td>
+            <td>
+              {% if trigger.action == 'created' %}
+                Starred &#129321;
+              {% else %}
+                Unstarred &#128557;
+              {% endif %}
+            </td>
+            <td>{{ trigger['my_timestamp'] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
