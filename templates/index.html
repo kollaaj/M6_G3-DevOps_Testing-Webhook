@@ -10,5 +10,29 @@
 </head>
 <body>
   <h1>Hello</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Who</th>
+        <th>What</th>
+        <th>When</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for trigger in triggers %}
+        <tr>
+          <td><a href="{{ trigger['sender']['html_url'] }}">{{ trigger['sender']['login'] }}</a></td>
+          <td>
+            {% if trigger.action == 'created' %}
+              Starred
+            {% else %}
+              Unstarred
+            {% endif %}
+          </td>
+          <td>{{ trigger['my_timestamp'] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </body>
 </html>
