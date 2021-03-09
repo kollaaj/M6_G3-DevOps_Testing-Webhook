@@ -18,6 +18,6 @@ def index():
 @app.route('/', methods=['POST'])
 def webhook():
     trigger = request.get_json()
-    trigger['my_timestamp'] = datetime.utcnow().strptime('%A %d %B %Y at %H:%M:%S')
+    trigger['my_timestamp'] = datetime.utcnow().strftime('%A %d %B %Y at %H:%M:%S')
     mongo_client['hook']['triggers'].insert_one(trigger)
     return ('', 204)
